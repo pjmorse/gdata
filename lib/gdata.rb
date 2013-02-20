@@ -20,4 +20,4 @@ require 'gdata/auth'
 # This is for Unicode "support"
 # Added conditional to support Ruby 1.9.x 2013-02-20 - pmorse@concord.org
 require 'jcode' if RUBY_VERSION < '1.9'
-$KCODE = 'UTF8'
+# $KCODE = 'UTF8' # "variable $KCODE is no longer effective; ignored" in Ruby 1.9.3
