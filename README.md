@@ -1,4 +1,4 @@
-= GData
+# GData
 
 This is a fork of the official Gdata gem:
 
@@ -10,13 +10,13 @@ To install this in a Bundler-enabled project, add the following line to your Gem
 
     gem 'gdata', :git => ''
 
-Note that much of the 
+Note that much of the Install directions below don't apply to this fork.
 
-== DESCRIPTION:
+## DESCRIPTION:
 
 Ruby wrapper for working with Google Data APIs
 
-== SYNOPSIS:
+## SYNOPSIS:
 
   yt = GData::Client::YouTube.new
   yt.source = 'my_cool_application'
@@ -70,13 +70,13 @@ Ruby wrapper for working with Google Data APIs
    
   response = @yt.post_file(feed, test_movie, mime_type, entry).to_xml
 
-== REQUIREMENTS:
+## REQUIREMENTS:
 
 * A sunny disposition
 
 Tested against Ruby 1.9.3 patch level 194
 
-== INSTALL:
+## INSTALL:
 
   -sudo gem install gdata- (see note above about Bundler)
 
@@ -90,7 +90,7 @@ To run unit tests:
   # edit test/test_config.yml
   rake test
 
-== LICENSE:
+## LICENSE:
 
 Copyright (C) 2008 Google Inc.
 
