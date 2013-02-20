@@ -8,7 +8,7 @@ So far, the only change is to allow support for Ruby 1.9.x by removing the `jcod
 
 To install this in a Bundler-enabled project, add the following line to your Gemfile:
 
-    gem 'gdata', :git => ''
+    gem 'gdata', :git => 'git://github.com/pjmorse/gdata.git'
 
 Note that much of the Install directions below don't apply to this fork.
 
@@ -18,57 +18,57 @@ Ruby wrapper for working with Google Data APIs
 
 ## SYNOPSIS:
 
-  yt = GData::Client::YouTube.new
-  yt.source = 'my_cool_application'
-  yt.clientlogin('username', 'password')
-  yt.client_id = 'CLIENT_ID'
-  yt.developer_key = 'DEVELOPER_KEY'
-  feed = yt.get('http://gdata.youtube.com/feeds/api/users/default/uploads').to_xml
+    yt = GData::Client::YouTube.new
+    yt.source = 'my_cool_application'
+    yt.clientlogin('username', 'password')
+    yt.client_id = 'CLIENT_ID'
+    yt.developer_key = 'DEVELOPER_KEY'
+    feed = yt.get('http://gdata.youtube.com/feeds/api/users/default/uploads').to_xml
   
-  # creating, updating, and deleting a playlist
+    # creating, updating, and deleting a playlist
   
-  entry = <<-EOF
-  <entry xmlns="http://www.w3.org/2005/Atom"
-      xmlns:yt="http://gdata.youtube.com/schemas/2007">
-    <title type="text">Ruby Utility Unit Test</title>
-    <summary>This is a test playlist.</summary>
-  </entry>
-  EOF
+    entry = <<-EOF
+    <entry xmlns="http://www.w3.org/2005/Atom"
+        xmlns:yt="http://gdata.youtube.com/schemas/2007">
+      <title type="text">Ruby Utility Unit Test</title>
+      <summary>This is a test playlist.</summary>
+    </entry>
+    EOF
   
-  response = yt.post('http://gdata.youtube.com/feeds/api/users/default/playlists', entry).to_xml
+    response = yt.post('http://gdata.youtube.com/feeds/api/users/default/playlists', entry).to_xml
   
-  edit_uri = response.elements["link[@rel='edit']"].attributes['href']
+    edit_uri = response.elements["link[@rel='edit']"].attributes['href']
   
-  response.elements["summary"].text = "Updated description"
+    response.elements["summary"].text = "Updated description"
   
-  response = yt.put(edit_uri, response.to_s).to_xml
+    response = yt.put(edit_uri, response.to_s).to_xml
   
-  yt.delete(edit_uri).to_xml
+    yt.delete(edit_uri).to_xml
   
-  # uploading a video
+    # uploading a video
   
-  test_movie = '/path/to/a/movie.mov'
-  mime_type = 'video/quicktime'
-  feed = 'http://uploads.gdata.youtube.com/feeds/api/users/default/uploads'
+    test_movie = '/path/to/a/movie.mov'
+    mime_type = 'video/quicktime'
+    feed = 'http://uploads.gdata.youtube.com/feeds/api/users/default/uploads'
 
-  entry = <<EOF
-  <entry xmlns="http://www.w3.org/2005/Atom"
-    xmlns:media="http://search.yahoo.com/mrss/"
-    xmlns:yt="http://gdata.youtube.com/schemas/2007">
-    <media:group>
-      <media:title type="plain">Test Movie</media:title>
-      <media:description type="plain">
-        This is a test with the Ruby library
-      </media:description>
-      <media:category
-        scheme="http://gdata.youtube.com/schemas/2007/categories.cat">People
-      </media:category>
-      <media:keywords>test,lame</media:keywords>
-    </media:group>
-  </entry>
-  EOF
+    entry = <<EOF
+    <entry xmlns="http://www.w3.org/2005/Atom"
+      xmlns:media="http://search.yahoo.com/mrss/"
+      xmlns:yt="http://gdata.youtube.com/schemas/2007">
+      <media:group>
+        <media:title type="plain">Test Movie</media:title>
+        <media:description type="plain">
+          This is a test with the Ruby library
+        </media:description>
+        <media:category
+          scheme="http://gdata.youtube.com/schemas/2007/categories.cat">People
+        </media:category>
+        <media:keywords>test,lame</media:keywords>
+      </media:group>
+    </entry>
+    EOF
    
-  response = @yt.post_file(feed, test_movie, mime_type, entry).to_xml
+    response = @yt.post_file(feed, test_movie, mime_type, entry).to_xml
 
 ## REQUIREMENTS:
 
@@ -78,17 +78,17 @@ Tested against Ruby 1.9.3 patch level 194
 
 ## INSTALL:
 
-  -sudo gem install gdata- (see note above about Bundler)
+    -sudo gem install gdata- // see note above about Bundler
 
 To generate documentation:
 
-  rake doc
+    rake doc
   
 To run unit tests:
   
-  cp test/test_config.yml.example test/test_config.yml
-  # edit test/test_config.yml
-  rake test
+    cp test/test_config.yml.example test/test_config.yml
+    # edit test/test_config.yml
+    rake test
 
 ## LICENSE:
 
